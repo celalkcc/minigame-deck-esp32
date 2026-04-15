@@ -1,11 +1,12 @@
 #ifndef DISPLAY_HPP
 #define DISPLAY_HPP
 
-class Display {
+class oled {
     public:
-        void init();
+        oled();
         void clear();
-        void drawBall(int x, int y);
+        void drawPixel(int x, int y);
+        void drawRectangle();
         void update();
 };
 

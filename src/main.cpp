@@ -4,7 +4,7 @@
 #include "hardware_config.hpp"
 #include "ball.hpp"
 #include "paddle.hpp"
-#include "display.hpp"
+#include "display.hpp" 
 
 void setup() {
     Serial.begin(9600);
