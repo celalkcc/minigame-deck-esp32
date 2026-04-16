@@ -1,4 +1,5 @@
 #include "paddle.hpp"
+#include "input_conf.hpp"
 
 Paddle::Paddle(int startX, int startY, int paddleSize){
     wallDistance = startX;
@@ -6,8 +7,7 @@ Paddle::Paddle(int startX, int startY, int paddleSize){
     size = paddleSize;
 }
 
-void Paddle::update(){
-    // update the paddlePosition
+void Paddle::update(){     
 }
 
 int Paddle::getY() const{

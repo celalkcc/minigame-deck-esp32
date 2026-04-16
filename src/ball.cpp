@@ -7,7 +7,7 @@ Ball::Ball(int startX, int startY, int velocityX, int velocityY){
 }
 
 void Ball::resetToCenter(){
-    // ball reset (after scoring)
+
 }
 
 void Ball::update(){
