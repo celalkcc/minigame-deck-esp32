@@ -11,5 +11,5 @@ void Paddle::update(){
 }
 
 int Paddle::getY() const{
-    // y-Position getter
+    return y;
 }

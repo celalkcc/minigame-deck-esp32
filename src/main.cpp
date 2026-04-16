@@ -12,7 +12,6 @@ void setup() {
 
     millis();
     pinMode (startButton, INPUT_PULLUP);
-
 }
 
 void loop() {

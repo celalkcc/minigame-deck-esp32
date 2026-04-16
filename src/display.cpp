@@ -10,24 +10,24 @@ constexpr int SCREEN_ADDRESS = 0X3c;
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-oled::oled() {
+myDisplay::myDisplay() {
     display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS); 
     display.clearDisplay();
 }
 
-void oled::clear() {
+void myDisplay::clear() {
     display.clearDisplay();
 }
 
-void oled::drawPixel(int x, int y) {
+void myDisplay::drawPixel(int x, int y) {
     display.drawPixel(x, y, WHITE);
 }
 
-void oled::update() {
+void myDisplay::update() {
     display.display();
 }
 
-void oled::drawRectangle() {
-
+void myDisplay::drawRectangle(int x, int y, int height, int width, int color) {
+    display.drawRect(x, y, width, height, WHITE);
 }
 
