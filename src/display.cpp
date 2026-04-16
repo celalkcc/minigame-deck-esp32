@@ -1,10 +1,10 @@
 #include "display.hpp"
+#include "conf.hpp"
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 
-constexpr int SCREEN_WIDTH = 128;
-constexpr int SCREEN_HEIGHT = 64;
+
 constexpr int OLED_RESET = -1;
 constexpr int SCREEN_ADDRESS = 0X3c;
 
@@ -30,4 +30,5 @@ void myDisplay::update() {
 void myDisplay::drawRectangle(int x, int y, int height, int width, int color) {
     display.drawRect(x, y, width, height, WHITE);
 }
+
 

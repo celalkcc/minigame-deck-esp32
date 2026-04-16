@@ -1,10 +1,16 @@
 #ifndef HARDWARE_CONFIG_HPP
 #define HARDWARE_CONFIG_HPP
 
-// control config
-constexpr int leftPlayerPoti = 0; 
-constexpr int rightPlayerPoti = 1;
-constexpr int startButton = 5;
-    
+class Potentiometer {
+    private:
+        int value;
+        int mappedValue;
+        int pin;
+        int screenHeight;
+    public:
+        Potentiometer(int pinNumber);
+        int getMappedValue();
+
+}; 
 
 #endif
