@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 // including header files
-#include "input_conf.hpp"
+#include "controller.hpp"
 #include "ball.hpp"
 #include "paddle.hpp"
 #include "display.hpp" 
@@ -16,4 +16,5 @@ void setup() {
 
 void loop() {
     pongUpdate();    
+    pongDrawScreen();
 }

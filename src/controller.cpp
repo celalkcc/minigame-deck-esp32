@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "input_conf.hpp"
+#include "controller.hpp"
 #include "display.hpp"
 #include "conf.hpp"
 
@@ -7,8 +7,8 @@ Controller::Controller(int pinNumber){
     pin = pinNumber;
 }
 
-int Controller::getMappedValue() {
+int Controller::getValue() {
     value = analogRead(pin);
-    mappedValue = map(value, 0, value, 0, SCREEN_HEIGHT);
-    return mappedValue;
+    mappedValue = map(value, 0, 4095, UPPER_BORDER, LOWER_BORDER);
+    return value;
 }

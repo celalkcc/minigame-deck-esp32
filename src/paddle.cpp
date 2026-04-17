@@ -1,5 +1,5 @@
 #include "paddle.hpp"
-#include "input_conf.hpp"
+#include "controller.hpp"
 #include "pong.hpp"
 
 Paddle::Paddle(int startX, int startY, int paddleSize){

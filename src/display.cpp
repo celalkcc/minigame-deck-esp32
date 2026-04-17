@@ -27,8 +27,8 @@ void myDisplay::update() {
     oled.display();
 }
 
-void myDisplay::drawRectangle(int x, int y, int height, int width, int color) {
-    oled.drawRect(x, y, width, height, WHITE);
+void myDisplay::drawPaddle(int x, int upperY, int lowerY) {
+    oled.drawLine(x, upperY, x, lowerY, WHITE);
 }
 
 

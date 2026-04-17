@@ -6,10 +6,9 @@ class Controller {
         int value;
         int mappedValue;
         int pin;
-        int screenHeight;
     public:
         Controller(int pinNumber);
-        int getMappedValue();
+        int getValue();
 
 }; 
 

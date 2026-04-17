@@ -20,7 +20,7 @@ void Ball::update(){
 }
 
 void Ball::bounceX(int leftBounceBorder, int rightBounceBorder){
-    if (x <= leftBounceBorder || x >= rightBounceBorder) {
+    if ((x <= leftBounceBorder || x >= rightBounceBorder) && y) {
         x = x * -1;
     }
 }

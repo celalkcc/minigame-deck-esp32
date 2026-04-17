@@ -2,7 +2,7 @@
 #include "conf.hpp"
 #include "pong.hpp"
 #include "paddle.hpp"
-#include "input_conf.hpp"
+#include "controller.hpp"
 #include "ball.hpp"
 #include "display.hpp"
 
@@ -14,16 +14,10 @@ Paddle RightPlayer(SCREEN_HEIGHT - WALL_DISTANCE, RIGHT_POTI, PADDLE_SIZE);
 Ball mainBall(0, 0, 1, 1);
 myDisplay oledScreen;
 
-// playing field
-constexpr int UPPER_BORDER = 0;
-constexpr int LOWER_BORDER = SCREEN_HEIGHT -1;
-constexpr int LEFT_BORDER = 0;
-constexpr int RIGHT_BORDER = SCREEN_WIDTH -1;
 
 void pongUpdate() {
-    mainBall.resetToCenter();
-    LeftPlayer.update(L.getMappedValue());
-    RightPlayer.update(R.getMappedValue());
+    LeftPlayer.update(L.getValue());
+    RightPlayer.update(R.getValue());
     mainBall.update();
     mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
     //mainBall. bounceX()
@@ -32,7 +26,6 @@ void pongUpdate() {
 void pongDrawScreen() {
     oledScreen.clear();
     oledScreen.drawPixel(mainBall.getX(), mainBall.getY());
-    //oledScreen.drawRectangle(LeftPlayer.getX(), LeftPlayer.)
-
-
+    oledScreen.drawPaddle(LeftPlayer.getX(), LeftPlayer.getUpperY(), LeftPlayer.getLowerY());
+    oledScreen.update();
 }

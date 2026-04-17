@@ -6,7 +6,7 @@ class myDisplay {
         myDisplay();
         void clear();
         void drawPixel(int x, int y);
-        void drawRectangle(int x, int y, int height, int width, int color);
+        void drawPaddle(int x, int upperY, int lowerY);
         void update();
 };
 
