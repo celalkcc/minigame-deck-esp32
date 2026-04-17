@@ -6,7 +6,7 @@
 
 
 constexpr int OLED_RESET = -1;
-constexpr int SCREEN_ADDRESS = 0X3c;
+constexpr int SCREEN_ADDRESS = 0X3C;
 
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 

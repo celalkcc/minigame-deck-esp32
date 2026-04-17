@@ -2,10 +2,10 @@
 #include "controller.hpp"
 #include "pong.hpp"
 
-Paddle::Paddle(int startX, int startY, int paddleSize){
+Paddle::Paddle(int startX, int controllerY, int paddleSize){
     wallDistance = startX;
     size = paddleSize;
-    upperY = startY;
+    upperY = controllerY;
     lowerY = upperY + size;
 }
 
