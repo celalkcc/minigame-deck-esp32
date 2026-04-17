@@ -8,27 +8,27 @@
 constexpr int OLED_RESET = -1;
 constexpr int SCREEN_ADDRESS = 0X3c;
 
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 myDisplay::myDisplay() {
-    display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS); 
-    display.clearDisplay();
+    oled.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS); 
+    oled.clearDisplay();
 }
 
 void myDisplay::clear() {
-    display.clearDisplay();
+    oled.clearDisplay();
 }
 
 void myDisplay::drawPixel(int x, int y) {
-    display.drawPixel(x, y, WHITE);
+    oled.drawPixel(x, y, WHITE);
 }
 
 void myDisplay::update() {
-    display.display();
+    oled.display();
 }
 
 void myDisplay::drawRectangle(int x, int y, int height, int width, int color) {
-    display.drawRect(x, y, width, height, WHITE);
+    oled.drawRect(x, y, width, height, WHITE);
 }
 
 

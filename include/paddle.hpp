@@ -13,6 +13,7 @@ public:
     Paddle(int startX, int startY, int PaddleSize);
 
     void update(int controllerY);
+    int getX() const;
     int getUpperY() const;
     int getLowerY() const;
 };

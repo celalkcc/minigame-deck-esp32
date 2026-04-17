@@ -19,24 +19,22 @@ void Ball::update(){
     x += veloX;
 }
 
-void Ball::bounceX(){
-    
+void Ball::bounceX(int leftBounceBorder, int rightBounceBorder){
+    if (x <= leftBounceBorder || x >= rightBounceBorder) {
+        x = x * -1;
+    }
 }
 
-void Ball::bounceY(){
-    if (y <= 0){
-        veloY = veloY * -1;
+void Ball::bounceY(int upperBounceBorder, int lowerBounceBorder){
+    if (y <= upperBounceBorder || y >= lowerBounceBorder) {
+        y = y * -1;
     }
-    if (y >= SCREEN_HEIGHT -1) {
-        veloY = veloY *-1;
-    }
-}
+}   
 
 int Ball::getX() const{
     return x;
 }
 
-// ball y-Value getter
 int Ball::getY() const{
     return y;
 }

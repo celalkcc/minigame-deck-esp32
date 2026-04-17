@@ -2,4 +2,4 @@
 
 void gameInit();
 void pongUpdate();
-void gameRender();
+void pongDrawScreen();

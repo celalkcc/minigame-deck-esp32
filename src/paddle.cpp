@@ -13,6 +13,9 @@ void Paddle::update(int controllerY){
    upperY = controllerY;
 }
 
+int Paddle::getX() const {
+    return wallDistance;
+}
 int Paddle::getUpperY() const{
     return upperY;
 }
