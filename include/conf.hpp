@@ -4,9 +4,9 @@ constexpr int SCREEN_HEIGHT = 64;
 constexpr int LEFT_BORDER = 0;
 constexpr int RIGHT_BORDER = SCREEN_WIDTH - 1;
 constexpr int UPPER_BORDER = 0;
-constexpr int LOWER_BORDER =SCREEN_WIDTH -1;
+constexpr int LOWER_BORDER =SCREEN_HEIGHT -1;
 
-constexpr int PADDLE_SIZE= 6;
+constexpr int PADDLE_SIZE= 12;
 constexpr int WALL_DISTANCE = 10;
 constexpr int LEFT_POTI = 2;
 constexpr int RIGHT_POTI= 1;

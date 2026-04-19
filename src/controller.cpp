@@ -8,6 +8,6 @@ Controller::Controller(int pinNumber){
 
 int Controller::getValue() {
     value = analogRead(pin);
-    mappedValue = map(value, 0, 4095, UPPER_BORDER, LOWER_BORDER);
+    mappedValue = map(value, 0, 4095, UPPER_BORDER, LOWER_BORDER - PADDLE_SIZE);
     return mappedValue;
 }

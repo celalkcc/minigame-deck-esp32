@@ -30,5 +30,6 @@ void pongDrawScreen() {
     oledScreen.clear();
     oledScreen.drawPixel(mainBall.getX(), mainBall.getY());
     oledScreen.drawPaddle(LeftPlayer.getX(), LeftPlayer.getUpperY(), LeftPlayer.getLowerY());
+    oledScreen.drawPaddle(RightPlayer.getX(), RightPlayer.getUpperY(), RightPlayer.getLowerY());
     oledScreen.update();
 }
