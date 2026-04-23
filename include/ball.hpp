@@ -15,7 +15,7 @@ public:
 
     void update();
     
-    void bounceX(int leftBounceBorder, int rightBounceBorder, int upperY, int lowerY);
+    void bounceX(int leftBounceBorder, int upperY, int lowerY);
     void bounceY(int upperBounceBorder, int lowerBounceBorder);
 
     int getX() const;
