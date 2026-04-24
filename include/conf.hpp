@@ -11,9 +11,9 @@ constexpr int WALL_DISTANCE = 10;
 constexpr int LEFT_POTI = 2;
 constexpr int RIGHT_POTI= 1;
 
-constexpr int LEFT = 0;
-constexpr int RIGHT= 0;
+constexpr int LEFT = 7;
+constexpr int RIGHT= 6;
 constexpr int UP = 0;
-constexpr int DOWN = 0;
-constexpr int BUTTON = 0;
+constexpr int DOWN = 3;
+constexpr int MIDDLE = 5;
 
