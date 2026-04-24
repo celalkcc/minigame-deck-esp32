@@ -13,13 +13,16 @@ public:
     Ball(int startX, int startY, int velocityX, int velocityY);
     void resetToCenter();
 
-    void update();
+    void update(bool xFlag, bool yFlag);
     
     void bounceX(int leftBounceBorder, int upperY, int lowerY);
     void bounceY(int upperBounceBorder, int lowerBounceBorder);
 
     int getX() const;
     int getY() const;
+
+    bool checkScoreLeft();
+    bool checkScoreRight();
 };
 
 #endif

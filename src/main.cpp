@@ -26,10 +26,7 @@ void setup() {
 
 
 void loop() {
-    if(!digitalRead(DOWN)) {
-
     game.update();
     game.drawScreen();
-    game.checkScore();
-    }
+    game.addToScore();
 }

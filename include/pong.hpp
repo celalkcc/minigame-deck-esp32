@@ -18,6 +18,16 @@ class Pong {
         Ball mainBall;
         myDisplay oledScreen;
 
+        enum pongStates{
+            MENU,
+            IN_GAME,
+            THROW_IN,
+            LEFT_WINS,
+            RIGHT_WINS,
+        };
+
+        pongStates currentState;
+
     public:
         Pong();
         void begin();
@@ -26,4 +36,6 @@ class Pong {
         void checkScore();
         int getScoreLeft() const;
         int getScoreRight() const;
+        void throwIn();
+        void addToScore();
 };

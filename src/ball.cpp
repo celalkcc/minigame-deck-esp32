@@ -14,9 +14,13 @@ void Ball::resetToCenter(){
     x = SCREEN_WIDTH / 2;
 }
 
-void Ball::update(){
-    y += veloY;
-    x += veloX;
+void Ball::update(bool xFlag, bool yFlag){
+    if (yFlag){
+        y += veloY;
+    }
+    if (xFlag){
+        x += veloX;
+    }
 }
 
 void Ball::bounceX(int xBounceBorder, int upperY, int lowerY){
@@ -46,4 +50,22 @@ int Ball::getX() const{
 int Ball::getY() const{
     return y;
 }
+
+bool Ball::checkScoreLeft() {
+    int ballX = x;
+    bool leftPlayerScored = 0;
+    bool rightPlayerScored = 0;
+    if (ballX <= LEFT_BORDER) {
+        rightPlayerScored = 1;
+    }
+    if (ballX >= RIGHT_BORDER) {
+        leftPlayerScored = 1;
+    }
+    return leftPlayerScored;
+    return rightPlayerScored;
+}
+bool Ball::checkScoreRight() {
+
+}
+
 

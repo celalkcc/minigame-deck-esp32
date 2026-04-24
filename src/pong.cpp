@@ -16,19 +16,45 @@ Pong::Pong()
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
     mainBall(0,0,1,1),
-    oledScreen()
+    oledScreen(),
+    currentState(MENU)
 {}
 void Pong::begin() { 
     oledScreen.begin();
 }
 
 void Pong::update() {
-    leftPaddle.update(leftController.getValue());
-    rightPaddle.update(rightController.getValue());
-    mainBall.update();
-    mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
-    mainBall.bounceX(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
-    mainBall.bounceX(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());   
+    switch (currentState) {
+        case MENU:
+            if(!digitalRead(MIDDLE)) {
+                currentState = IN_GAME;
+            }
+        break;
+
+        case IN_GAME:
+            leftPaddle.update(leftController.getValue());
+            rightPaddle.update(rightController.getValue());
+            mainBall.update(1, 1);
+            mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
+            mainBall.bounceX(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
+            mainBall.bounceX(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());   
+        break;
+
+        case THROW_IN:
+            mainBall.update(0, 1);
+            mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
+            if (!digitalRead(MIDDLE)) {
+                currentState = IN_GAME;
+            }
+        break;
+
+        case LEFT_WINS:
+
+        break;
+
+        case RIGHT_WINS:
+        break;
+    }
 }
 
 void Pong::drawScreen() {
@@ -40,7 +66,7 @@ void Pong::drawScreen() {
     oledScreen.update();
 }
 
-void Pong::checkScore() {
+/*void Pong::checkScore() {
     int ballX = mainBall.getX();
     static int leftPlayerPoints = 0;
     static int rightPlayerPoints = 0;
@@ -50,4 +76,15 @@ void Pong::checkScore() {
     if (ballX >= RIGHT_BORDER) {
         leftPlayerPoints += 1;
     }
+}
+    */
+void Pong::throwIn() {
+    mainBall.resetToCenter();
+    mainBall.update(0,1);
+    mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
+}
+
+void Pong::addToScore() {
+    scoreLeft += mainBall.checkScoreLeft();
+    scoreRight += mainBall.checkScoreRight();
 }
