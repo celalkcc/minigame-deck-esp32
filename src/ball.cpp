@@ -64,7 +64,7 @@ bool Ball::checkScoreRight() {
 
     bool rightPlayerScored = 0;
     if (ballX <= LEFT_BORDER) {
-        rightPlayerScored = 0;
+        rightPlayerScored = 1;
     }
     return rightPlayerScored;
 }

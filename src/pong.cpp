@@ -19,7 +19,8 @@ Pong::Pong()
     oledScreen(),
     currentState(MENU),
     leftPlayer(),
-    rightPlayer()
+    rightPlayer(),
+    middleButton(MIDDLE)
 
 {}
 
@@ -30,7 +31,7 @@ void Pong::begin() {
 void Pong::update() {
     switch (currentState) {
         case MENU:
-            if(!digitalRead(MIDDLE)) {
+            if(middleButton.isPressed()) {
                 currentState = IN_GAME;
             }
         break;
@@ -48,20 +49,35 @@ void Pong::update() {
                 mainBall.resetToCenter();
                 currentState = THROW_IN;
             }
+            
+            if (middleButton.isPressed()) {
+                currentState = PAUSE;
+            }
+        break;
+
+        case PAUSE:
+           if (middleButton.isPressed()){
+                currentState = IN_GAME;
+           } 
         break;
 
         case THROW_IN:
             if (leftPlayer.getScore() > 4){
+                leftPlayer.resetScore();
+                rightPlayer.resetScore();
                 currentState = LEFT_WINS;
             }
             if (rightPlayer.getScore() > 4){
+                leftPlayer.resetScore();
+                rightPlayer.resetScore();
                 currentState = RIGHT_WINS;
             }
             leftPaddle.update(leftController.getValue());
             rightPaddle.update(rightController.getValue());
             mainBall.update(0, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
-            if (!digitalRead(MIDDLE)) {
+            oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
+            if (middleButton.isPressed()) {
                 currentState = IN_GAME;
             }
         break;
@@ -83,7 +99,9 @@ void Pong::drawScreen() {
     oledScreen.drawPixel(mainBall.getX(), mainBall.getY());
     oledScreen.drawPaddle(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
     oledScreen.drawPaddle(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());
-    //oledScreen.drawScore(scoreLeft, scoreRight);
+    if (currentState == THROW_IN){
+        oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
+    }
     oledScreen.update();
 }
 

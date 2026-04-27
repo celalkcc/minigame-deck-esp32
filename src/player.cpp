@@ -11,3 +11,7 @@ int Player::getScore() const {
 void Player::addToScore(int count){
     score += count;
 }
+
+void Player::resetScore(){
+    score = 0;
+}

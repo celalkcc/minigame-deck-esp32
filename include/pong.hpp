@@ -3,6 +3,7 @@
 #include "ball.hpp"
 #include "display.hpp"
 #include "player.hpp"
+#include "button.hpp"
 
 
 
@@ -22,9 +23,12 @@ class Pong {
         Player leftPlayer;
         Player rightPlayer;
 
+        Button middleButton;
+
         enum pongStates{
             MENU,
             IN_GAME,
+            PAUSE,
             THROW_IN,
             LEFT_WINS,
             RIGHT_WINS,

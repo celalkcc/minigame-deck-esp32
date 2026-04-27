@@ -8,4 +8,5 @@ class Player {
         Player();
         int getScore() const;
         void addToScore(int count);
+        void resetScore();
 };

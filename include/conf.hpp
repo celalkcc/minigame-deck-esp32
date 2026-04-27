@@ -8,12 +8,16 @@ constexpr int LOWER_BORDER =SCREEN_HEIGHT -1;
 
 constexpr int PADDLE_SIZE= 12;
 constexpr int WALL_DISTANCE = 10;
-constexpr int LEFT_POTI = 2;
-constexpr int RIGHT_POTI= 1;
+
+constexpr int PASSIVE_BUZZER = 12;
+constexpr int LEFT_POTI = 4;
+constexpr int RIGHT_POTI= 5;
 
 constexpr int LEFT = 7;
 constexpr int RIGHT= 6;
 constexpr int UP = 0;
 constexpr int DOWN = 3;
-constexpr int MIDDLE = 5;
+constexpr int MIDDLE = 17;
+
+constexpr int BUTTON_DEBOUNCE_TIME = 200;
 
