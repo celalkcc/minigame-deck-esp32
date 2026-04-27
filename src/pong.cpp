@@ -63,7 +63,10 @@ void Pong::update() {
         break;
 
         case PAUSE:
-           if (tactileStickMiddle.isPressed()){
+            leftPaddle.update(leftController.getValue());
+            rightPaddle.update(rightController.getValue());
+            oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
+            if (tactileStickMiddle.isPressed()){
                 currentState = IN_GAME;
            } 
         break;
@@ -83,7 +86,6 @@ void Pong::update() {
             rightPaddle.update(rightController.getValue());
             mainBall.update(0, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
-            oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
             if (tactileStickMiddle.isPressed()) {
                 currentState = IN_GAME;
             }
@@ -109,6 +111,14 @@ void Pong::drawScreen() {
     if (currentState == THROW_IN){
         oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
     }
+    if (currentState == PAUSE){
+        oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
+        oledScreen.drawCenterLine();
+    }
+    if (currentState == IN_GAME){
+        oledScreen.drawCenterLine();
+    }
+    
     oledScreen.update();
 }
 

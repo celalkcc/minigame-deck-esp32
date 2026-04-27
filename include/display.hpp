@@ -10,6 +10,7 @@ class myDisplay {
         void drawPaddle(int x, int upperY, int lowerY);
         void drawScore(int scoreL, int scoreR);
         void update();
+        void drawCenterLine();
 };
 
 #endif

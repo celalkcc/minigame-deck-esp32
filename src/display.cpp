@@ -49,5 +49,12 @@ void myDisplay::drawScore(int scoreL, int scoreR) {
     // Right player
     oled.setCursor(90, 0);
     oled.print(scoreR);
-    oled.display();
+}
+
+void myDisplay::drawCenterLine() {
+    int centerX = SCREEN_WIDTH / 2;
+
+    for (int y = 0; y < SCREEN_HEIGHT; y += 6) {
+      oled.drawLine(centerX, y, centerX, y + 1, WHITE);
+    }
 }
