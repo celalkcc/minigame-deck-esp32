@@ -1,3 +1,6 @@
+#ifndef PONG_HPP
+#define PONG_HPP
+
 #include "controller.hpp"
 #include "paddle.hpp"
 #include "ball.hpp"
@@ -5,7 +8,7 @@
 #include "player.hpp"
 #include "button.hpp"
 
-
+// a class managing pong game with a state machine
 
 class Pong {
     private:
@@ -53,3 +56,6 @@ class Pong {
         int getScoreRight() const;
         void throwIn();
 };
+
+
+#endif
