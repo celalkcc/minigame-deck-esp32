@@ -20,11 +20,12 @@ void myDisplay::begin() {
     if(!oled.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
         Serial.println("SSD1306 allocation failed");
         while(true); 
+    oled.begin();
     }
 }
 
 void myDisplay::clear() {
-    oled.invertDisplay(1);
+    oled.invertDisplay(0);
     oled.clearDisplay();
 }
 
@@ -62,5 +63,5 @@ void myDisplay::drawCenterLine() {
 }
 
 void myDisplay::drawBitmap() {
-    oled.drawBitmap(0,0, start_menuNew_Piskel_1, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
+    oled.drawBitmap(0,0, epd_bitmap_Dinosaur, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
 }

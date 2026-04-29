@@ -21,7 +21,7 @@ class Pong {
         Paddle rightPaddle;
 
         Ball mainBall;
-        myDisplay oledScreen;
+        //myDisplay oledScreen;
 
         Player leftPlayer;
         Player rightPlayer;
@@ -50,7 +50,7 @@ class Pong {
         Pong();
         void begin();
         void update();
-        void drawScreen();
+        void drawScreen(myDisplay& screen);
         void checkScore();
         int getScoreLeft() const;
         int getScoreRight() const;

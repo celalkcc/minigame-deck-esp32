@@ -16,7 +16,7 @@ Pong::Pong()
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
     mainBall(),
-    oledScreen(),
+    //oledScreen(),
     currentState(MENU),
     leftPlayer(),
     rightPlayer(),
@@ -31,9 +31,6 @@ Pong::Pong()
     rightButton(RIGHT_PLAYER_BUTTON)
 {}
 
-void Pong::begin() { 
-    oledScreen.begin();
-}
 
 void Pong::update() {
     switch (currentState) {
@@ -66,7 +63,6 @@ void Pong::update() {
         case PAUSE:
             leftPaddle.update(leftController.getValue());
             rightPaddle.update(rightController.getValue());
-            oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
             if (tactileStickMiddle.isPressed()){
                 currentState = IN_GAME;
            } 
@@ -104,23 +100,23 @@ void Pong::update() {
     }
 }
 
-void Pong::drawScreen() {
-    oledScreen.clear();
-    oledScreen.drawPixel(mainBall.getX(), mainBall.getY());
-    oledScreen.drawPaddle(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
-    oledScreen.drawPaddle(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());
+void Pong::drawScreen(myDisplay& screen) {
+    screen.clear();
+    screen.drawPixel(mainBall.getX(), mainBall.getY());
+    screen.drawPaddle(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
+    screen.drawPaddle(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());
     if (currentState == THROW_IN){
-        oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
+        screen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
     }
     if (currentState == PAUSE){
-        oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
-        oledScreen.drawCenterLine();
+        screen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
+        screen.drawCenterLine();
     }
     if (currentState == IN_GAME){
-        oledScreen.drawCenterLine();
+        screen.drawCenterLine();
     }
     
-    oledScreen.update();
+    screen.update();
 }
 
 void Pong::throwIn() {

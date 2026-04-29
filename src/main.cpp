@@ -9,13 +9,18 @@
 #include "pong.hpp"
 #include "conf.hpp"
 
-Pong game;
+myDisplay oledScreen;
+
 
 void setup() {
     Serial.begin(115200);
     delay(2000);
     Serial.print("MiniGame Deck - Version 0.99");
-    millis();
+    oledScreen.begin();
+    oledScreen.clear();
+    oledScreen.drawBitmap();
+    oledScreen.update();
+    delay(4000);
     pinMode(LEFT, INPUT_PULLUP);
     pinMode(MIDDLE, INPUT_PULLUP);
     pinMode(RIGHT, INPUT_PULLUP);
@@ -24,11 +29,10 @@ void setup() {
     pinMode(LEFT_PLAYER_BUTTON, INPUT_PULLUP);
     pinMode(RIGHT_PLAYER_BUTTON, INPUT_PULLUP);
     
-    
-    game.begin();
 }
 
 void loop() {
+    static Pong game;
     game.update();
-    game.drawScreen();
+    game.drawScreen(oledScreen);
 }
