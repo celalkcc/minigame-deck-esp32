@@ -38,6 +38,7 @@ void Pong::begin() {
 void Pong::update() {
     switch (currentState) {
         case MENU:
+            
             if(tactileStickMiddle.isPressed()) {
                 currentState = IN_GAME;
             }

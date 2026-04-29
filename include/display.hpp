@@ -11,6 +11,7 @@ class myDisplay {
         void drawScore(int scoreL, int scoreR);
         void update();
         void drawCenterLine();
+        void drawBitmap();
 };
 
 #endif

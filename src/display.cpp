@@ -1,5 +1,6 @@
 #include "display.hpp"
 #include "conf.hpp"
+#include "bitMaps.hpp"
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
@@ -23,6 +24,7 @@ void myDisplay::begin() {
 }
 
 void myDisplay::clear() {
+    oled.invertDisplay(1);
     oled.clearDisplay();
 }
 
@@ -57,4 +59,8 @@ void myDisplay::drawCenterLine() {
     for (int y = 0; y < SCREEN_HEIGHT; y += 6) {
       oled.drawLine(centerX, y, centerX, y + 1, WHITE);
     }
+}
+
+void myDisplay::drawBitmap() {
+    oled.drawBitmap(0,0, start_menuNew_Piskel_1, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
 }
