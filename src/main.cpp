@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include <Wire.h>
+#include <HardwareSerial.h>
+#include <DFRobotDFPlayerMini.h>
 
 // including header files
 #include "controller.hpp"
@@ -15,6 +17,9 @@ myDisplay oledScreen;
 Input input;
 Pong game;
 
+HardwareSerial dfSerial(1);
+DFRobotDFPlayerMini myDFPlayer;
+
 // Global State Machine
 enum DeviceState{
     START_MENU,
@@ -26,18 +31,25 @@ DeviceState currentState = START_MENU;
 
 
 void setup() {
+    Serial.begin(115200);
+    dfSerial.begin(9600, SERIAL_8N1, DFPLAYER_RX, DFPLAYER_TX);
 
     // Initializing Hardware
-    Serial.begin(115200);
-    delay(2000);
-    Serial.print("MiniGame Deck - Version 0.99");
     oledScreen.begin();
     oledScreen.clear();
+    
     delay(1000);
+    if (!myDFPlayer.begin(dfSerial)) {
+        Serial.println("DFPlayer error");
+        while(true);
+    }
+    myDFPlayer.volume(20);
+
 
     // Bootscreen
     oledScreen.drawBitmap();
     oledScreen.update();
+    myDFPlayer.play(1);
     delay(4000);
 
     pinMode(LEFT, INPUT_PULLUP);
@@ -47,10 +59,10 @@ void setup() {
     pinMode(DOWN, INPUT_PULLUP);
     pinMode(LEFT_PLAYER_BUTTON, INPUT_PULLUP);
     pinMode(RIGHT_PLAYER_BUTTON, INPUT_PULLUP);
+    pinMode(PASSIVE_BUZZER, OUTPUT);
 }
 
 void loop() {
-    
     InputState state = input.read();
 
     switch (currentState) {

@@ -25,6 +25,12 @@ constexpr int UP = 5;
 constexpr int DOWN = 6;
 constexpr int MIDDLE = 2;
 
+constexpr int PASSIVE_BUZZER = 12;
+
+constexpr int DFPLAYER_RX = 17;
+constexpr int DFPLAYER_TX = 18;
+
+
 constexpr int RIGHT_PLAYER_BUTTON = 1;
 constexpr int LEFT_PLAYER_BUTTON = 7;
 

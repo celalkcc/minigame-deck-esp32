@@ -63,5 +63,5 @@ void myDisplay::drawCenterLine() {
 }
 
 void myDisplay::drawBitmap() {
-    oled.drawBitmap(0,0, epd_bitmap_Dinosaur, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
+    oled.drawBitmap(0,0, midori_san, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
 }
