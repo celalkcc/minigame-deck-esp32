@@ -9,7 +9,9 @@ Input::Input()
         up(UP),
         down(DOWN),
         leftPlayerButton(LEFT_PLAYER_BUTTON),
-        rightPlayerButton(RIGHT_PLAYER_BUTTON)
+        rightPlayerButton(RIGHT_PLAYER_BUTTON),
+        leftPoti(LEFT_POTI),
+        rightPoti(RIGHT_POTI)
 {}
 
 
@@ -23,6 +25,8 @@ InputState Input::read() {
     state.down = down.isPressed();
     state.leftActionButton = leftPlayerButton.isPressed();
     state.rightActionButton = rightPlayerButton.isPressed();
+    state.leftController = leftPoti.getValue();
+    state.rightController = rightPoti.getValue();
     
     return state;
 }

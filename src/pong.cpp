@@ -12,16 +12,12 @@
 Pong::Pong()
     : scoreLeft(0),
     scoreRight(0),
-    leftController(LEFT_POTI),
-    rightController(RIGHT_POTI),
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
     mainBall(),
-    //oledScreen(),
     currentState(MENU),
     leftPlayer(),
     rightPlayer()
-
 {}
 
 
@@ -35,8 +31,8 @@ void Pong::update(const InputState& input) {
         break;
 
         case IN_GAME:
-            leftPaddle.update(leftController.getValue());
-            rightPaddle.update(rightController.getValue());
+            leftPaddle.update(input.leftController);
+            rightPaddle.update(input.rightController);
             mainBall.update(true, true);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             mainBall.bounceX(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
@@ -54,8 +50,8 @@ void Pong::update(const InputState& input) {
         break;
 
         case PAUSE:
-            leftPaddle.update(leftController.getValue());
-            rightPaddle.update(rightController.getValue());
+            leftPaddle.update(input.leftController);
+            rightPaddle.update(input.rightController);
             if (input.middle){
                 currentState = IN_GAME;
            } 
@@ -72,8 +68,8 @@ void Pong::update(const InputState& input) {
                 rightPlayer.resetScore();
                 currentState = RIGHT_WINS;
             }
-            leftPaddle.update(leftController.getValue());
-            rightPaddle.update(rightController.getValue());
+            leftPaddle.update(input.leftController);
+            rightPaddle.update(input.rightController);
             mainBall.update(0, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             if (input.middle) {

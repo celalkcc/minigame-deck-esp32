@@ -15,8 +15,6 @@ class Pong {
     private:
         int scoreLeft;
         int scoreRight;
-        Controller leftController;
-        Controller rightController;
 
         Paddle leftPaddle;
         Paddle rightPaddle;
