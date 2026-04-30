@@ -13,6 +13,16 @@
 
 myDisplay oledScreen;
 Input input;
+Pong game;
+
+// Global State Machine
+enum DeviceState{
+    START_MENU,
+    SETTINGS_MENU,
+    PONG_GAME
+};
+DeviceState currentState = START_MENU;
+
 
 
 void setup() {
@@ -41,9 +51,22 @@ void setup() {
 
 void loop() {
     
-    static Pong game;
     InputState state = input.read();
+
+    switch (currentState) {
+        case START_MENU:
+            if(state.middle) {
+                currentState = PONG_GAME;
+            }
+            break;
+        
+        case SETTINGS_MENU:
+            // add settings menu
+            break;
+        case PONG_GAME:
+            game.update(state);
+            game.drawScreen(oledScreen);
+            break;
+    }
     
-    game.update(state);
-    game.drawScreen(oledScreen);
 }

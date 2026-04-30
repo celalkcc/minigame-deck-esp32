@@ -19,8 +19,8 @@ struct InputState {
     int rightController;
 };
 
-// the Input class updates the snapshot of button values
-// it returns the snapshot of type InputState via read(), 
+// the Input class updates the snapshot of input values
+// it returns the input snapshot of type InputState via read(), 
 class Input {
     private:
         Button middle;

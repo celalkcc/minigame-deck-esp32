@@ -15,7 +15,7 @@ Pong::Pong()
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
     mainBall(),
-    currentState(MENU),
+    currentState(THROW_IN),
     leftPlayer(),
     rightPlayer()
 {}
