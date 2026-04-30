@@ -1,6 +1,8 @@
 #ifndef PONG_HPP
 #define PONG_HPP
 
+#include <DFRobotDFPlayerMini.h>
+
 #include "controller.hpp"
 #include "paddle.hpp"
 #include "ball.hpp"

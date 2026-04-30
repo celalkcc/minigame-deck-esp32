@@ -1,17 +1,15 @@
 #ifndef AUDIO_HPP
 #define AUDIO_HPP
 
+#include <Arduino.h>
+#include "conf.hpp"
+
 class Audio{
     private:
-        int dfVolume;
-        int currentSong;
-
+        unsigned volume;
     public:
         Audio();
-        void passiveBuzzer(int soundSelector);
-        void selectPlaylist(int playlistSelector);
-        void playSong(int songSelector);
-        void playAdvert();
+
 };
 
 

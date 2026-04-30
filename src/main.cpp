@@ -12,10 +12,12 @@
 #include "conf.hpp"
 #include "button.hpp"
 #include "input.hpp"
+#include "led.hpp"
 
 myDisplay oledScreen;
 Input input;
 Pong game;
+LedStrip WS28;
 
 HardwareSerial dfSerial(1);
 DFRobotDFPlayerMini myDFPlayer;
@@ -31,10 +33,11 @@ DeviceState currentState = START_MENU;
 
 
 void setup() {
+    // Initializing Hardware
     Serial.begin(115200);
     dfSerial.begin(9600, SERIAL_8N1, DFPLAYER_RX, DFPLAYER_TX);
-
-    // Initializing Hardware
+    ledcSetup(BUZZER_LEDC_CHANNEL, 2000, 8);
+    ledcAttachPin(PASSIVE_BUZZER, BUZZER_LEDC_CHANNEL);
     oledScreen.begin();
     oledScreen.clear();
     
@@ -59,11 +62,24 @@ void setup() {
     pinMode(DOWN, INPUT_PULLUP);
     pinMode(LEFT_PLAYER_BUTTON, INPUT_PULLUP);
     pinMode(RIGHT_PLAYER_BUTTON, INPUT_PULLUP);
-    pinMode(PASSIVE_BUZZER, OUTPUT);
 }
 
 void loop() {
+    WS28.ambientGlow();
     InputState state = input.read();
+
+    if(state.right) {
+        myDFPlayer.next();
+    }
+
+    if(state.down) {
+        myDFPlayer.volumeDown();
+    }
+
+    if(state.up) {
+        myDFPlayer.volumeUp();
+    }
+    
 
     switch (currentState) {
         case START_MENU:

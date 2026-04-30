@@ -21,21 +21,29 @@ constexpr int RIGHT_POTI= 11;
 // buttons
 constexpr int LEFT = 4;
 constexpr int RIGHT= 3;
-constexpr int UP = 5;
-constexpr int DOWN = 6;
+constexpr int UP = 13;
+constexpr int DOWN = 5;
 constexpr int MIDDLE = 2;
 
 constexpr int PASSIVE_BUZZER = 12;
+constexpr int BUZZER_LEDC_CHANNEL = 0;
 
 constexpr int DFPLAYER_RX = 17;
 constexpr int DFPLAYER_TX = 18;
+constexpr int dfPlayerStartVolume = 20;
+
+constexpr int LED_PIN = 14;
+constexpr int NUMBER_OF_LEDS = 8;
+#define LED_TYPE WS2812B
+#define COLOR_ORDER GRB
+
 
 
 constexpr int RIGHT_PLAYER_BUTTON = 1;
 constexpr int LEFT_PLAYER_BUTTON = 7;
 
 // this determines the debouncing time (see button.cpp)
-constexpr int BUTTON_DEBOUNCE_TIME = 200;
+constexpr int BUTTON_DEBOUNCE_TIME = 500;
 
 #endif
 

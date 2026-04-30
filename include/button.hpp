@@ -5,7 +5,7 @@
 class Button {
     private:
         int pin;
-        unsigned long debouncingTimer;
+        unsigned long debouncingTimer = 0;
     public:
         Button(int buttonPin);
 

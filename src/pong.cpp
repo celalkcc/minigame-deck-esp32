@@ -43,7 +43,6 @@ void Pong::update(const InputState& input) {
                 mainBall.resetToCenter();
                 currentState = THROW_IN;
             }
-            
             if (input.middle) {
                 currentState = PAUSE;
             }
