@@ -7,6 +7,7 @@
 #include "display.hpp"
 #include "player.hpp"
 #include "button.hpp"
+#include "input.hpp"
 
 // a class managing pong game with a state machine
 
@@ -26,15 +27,6 @@ class Pong {
         Player leftPlayer;
         Player rightPlayer;
 
-        Button tactileStickMiddle;
-        Button tactileStickLeft;
-        Button tactileStickRight;
-        Button tactileStickUp;
-        Button tactileStickDown;
-
-        Button leftButton;
-        Button rightButton;
-
         enum pongStates{
             MENU,
             IN_GAME,
@@ -49,7 +41,7 @@ class Pong {
     public:
         Pong();
         void begin();
-        void update();
+        void update(const InputState& input);
         void drawScreen(myDisplay& screen);
         void checkScore();
         int getScoreLeft() const;

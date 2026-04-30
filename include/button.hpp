@@ -12,5 +12,4 @@ class Button {
         bool isPressed();
 };
 
-
 #endif

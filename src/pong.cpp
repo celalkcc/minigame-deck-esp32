@@ -6,6 +6,7 @@
 #include "controller.hpp"
 #include "ball.hpp"
 #include "display.hpp"
+#include "input.hpp"
 
 
 Pong::Pong()
@@ -19,24 +20,16 @@ Pong::Pong()
     //oledScreen(),
     currentState(MENU),
     leftPlayer(),
-    rightPlayer(),
+    rightPlayer()
 
-    tactileStickMiddle(MIDDLE),
-    tactileStickLeft(LEFT),
-    tactileStickRight(RIGHT),
-    tactileStickUp(UP),
-    tactileStickDown(DOWN),
-
-    leftButton(LEFT_PLAYER_BUTTON),
-    rightButton(RIGHT_PLAYER_BUTTON)
 {}
 
 
-void Pong::update() {
+void Pong::update(const InputState& input) {
     switch (currentState) {
         case MENU:
             
-            if(tactileStickMiddle.isPressed()) {
+            if(input.middle) {
                 currentState = IN_GAME;
             }
         break;
@@ -55,7 +48,7 @@ void Pong::update() {
                 currentState = THROW_IN;
             }
             
-            if (tactileStickMiddle.isPressed()) {
+            if (input.middle) {
                 currentState = PAUSE;
             }
         break;
@@ -63,7 +56,7 @@ void Pong::update() {
         case PAUSE:
             leftPaddle.update(leftController.getValue());
             rightPaddle.update(rightController.getValue());
-            if (tactileStickMiddle.isPressed()){
+            if (input.middle){
                 currentState = IN_GAME;
            } 
         break;
@@ -83,7 +76,7 @@ void Pong::update() {
             rightPaddle.update(rightController.getValue());
             mainBall.update(0, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
-            if (tactileStickMiddle.isPressed()) {
+            if (input.middle) {
                 currentState = IN_GAME;
             }
         break;
