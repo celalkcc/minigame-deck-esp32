@@ -10,6 +10,8 @@
 #include "player.hpp"
 #include "button.hpp"
 #include "input.hpp"
+#include "audio.hpp"
+#include "output.hpp"
 
 // a class managing pong game with a state machine
 
@@ -41,7 +43,7 @@ class Pong {
     public:
         Pong();
         void begin();
-        void update(const InputState& input);
+        void update(const InputState& input, gameState& output);
         void drawScreen(myDisplay& screen);
         void checkScore();
         int getScoreLeft() const;

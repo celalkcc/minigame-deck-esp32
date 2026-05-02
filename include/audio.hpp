@@ -7,8 +7,10 @@
 class Audio{
     private:
         unsigned volume;
+        int buzzerTimer;
     public:
         Audio();
+        void colision();
 
 };
 

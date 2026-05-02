@@ -13,11 +13,14 @@
 #include "button.hpp"
 #include "input.hpp"
 #include "led.hpp"
+#include "audio.hpp"
 
 myDisplay oledScreen;
 Input input;
+gameState gameOutput;
 Pong game;
 LedStrip WS28;
+//Audio mySound;
 
 HardwareSerial dfSerial(1);
 DFRobotDFPlayerMini myDFPlayer;
@@ -36,8 +39,7 @@ void setup() {
     // Initializing Hardware
     Serial.begin(115200);
     dfSerial.begin(9600, SERIAL_8N1, DFPLAYER_RX, DFPLAYER_TX);
-    ledcSetup(BUZZER_LEDC_CHANNEL, 2000, 8);
-    ledcAttachPin(PASSIVE_BUZZER, BUZZER_LEDC_CHANNEL);
+    
     oledScreen.begin();
     oledScreen.clear();
     
@@ -65,25 +67,24 @@ void setup() {
 }
 
 void loop() {
-    WS28.ambientGlow();
-    InputState state = input.read();
+    InputState gameInput = input.read();
 
-    if(state.right) {
+    if(gameInput.right) {
         myDFPlayer.next();
     }
 
-    if(state.down) {
+    if(gameInput.down) {
         myDFPlayer.volumeDown();
     }
 
-    if(state.up) {
+    if(gameInput.up) {
         myDFPlayer.volumeUp();
     }
     
 
     switch (currentState) {
         case START_MENU:
-            if(state.middle) {
+            if(gameInput.middle) {
                 currentState = PONG_GAME;
             }
             break;
@@ -92,7 +93,7 @@ void loop() {
             // add settings menu
             break;
         case PONG_GAME:
-            game.update(state);
+            game.update(gameInput, gameOutput);
             game.drawScreen(oledScreen);
             break;
     }

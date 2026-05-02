@@ -9,7 +9,6 @@ class LedStrip {
         CRGB leds[NUMBER_OF_LEDS];
     public:
         LedStrip();
-        void ambientGlow();
 };
 
 

@@ -7,6 +7,7 @@
 #include "ball.hpp"
 #include "display.hpp"
 #include "input.hpp"
+#include "audio.hpp"
 
 
 Pong::Pong()
@@ -21,7 +22,7 @@ Pong::Pong()
 {}
 
 
-void Pong::update(const InputState& input) {
+void Pong::update(const InputState& input, gameState& output) {
     switch (currentState) {
         case MENU:
             
