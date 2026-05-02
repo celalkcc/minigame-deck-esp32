@@ -10,22 +10,27 @@
 #include "audio.hpp"
 
 
-Pong::Pong()
-    : scoreLeft(0),
+Pong::Pong(GameOutput& output)
+    : 
+    output(output),
+    scoreLeft(0),
     scoreRight(0),
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
-    mainBall(),
+    mainBall(output),
     currentState(THROW_IN),
     leftPlayer(),
     rightPlayer()
 {}
 
 
-void Pong::update(const InputState& input, gameState& output) {
+void Pong::update(const InputState& input) {
+    
+    scoreLeft = output.scoreLeft;
+    scoreRight = output.scoreRight;
+
     switch (currentState) {
         case MENU:
-            
             if(input.middle) {
                 currentState = IN_GAME;
             }
@@ -34,7 +39,7 @@ void Pong::update(const InputState& input, gameState& output) {
         case IN_GAME:
             leftPaddle.update(input.leftController);
             rightPaddle.update(input.rightController);
-            mainBall.update(true, true);
+            mainBall.update(1, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             mainBall.bounceX(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
             mainBall.bounceX(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());   

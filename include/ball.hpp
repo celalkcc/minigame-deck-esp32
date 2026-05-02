@@ -1,11 +1,13 @@
 #ifndef BALL_HPP
 #define BALL_HPP
-
+#include "output.hpp"
 // a class that manages ball(s)
 
 class Ball {
 
 private:
+
+    GameOutput& ballOutput;
     // coordinates of the ball
     int x;
     int y;
@@ -13,8 +15,9 @@ private:
     int veloX;
     int veloY;
 
+
 public:
-    Ball();
+    Ball(GameOutput& ballOutput);
     void resetToCenter(); // resets the ball after someone scored
 
     void update(bool xFlag, bool yFlag); // updates the coordinates if the flags are true

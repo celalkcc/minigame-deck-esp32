@@ -17,6 +17,8 @@
 
 class Pong {
     private:
+
+        GameOutput& output;
         int scoreLeft;
         int scoreRight;
 
@@ -24,7 +26,6 @@ class Pong {
         Paddle rightPaddle;
 
         Ball mainBall;
-        //myDisplay oledScreen;
 
         Player leftPlayer;
         Player rightPlayer;
@@ -41,9 +42,9 @@ class Pong {
         pongStates currentState;
 
     public:
-        Pong();
+        Pong(GameOutput& state);
         void begin();
-        void update(const InputState& input, gameState& output);
+        void update(const InputState& input);
         void drawScreen(myDisplay& screen);
         void checkScore();
         int getScoreLeft() const;

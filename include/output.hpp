@@ -1,13 +1,14 @@
 #ifndef OUTPUT_HPP
 #define OUTPUT_HPP
 
-struct gameState {
+struct GameOutput {
     bool wallColision;
     bool paddleColision;
-    bool someoneScored;
+    bool ballOutsidePlayingField;
     unsigned scoreLeft;
-    unsigned scoreRight;
+    unsigned scoreRight; 
 };
+
 
 
 #endif
