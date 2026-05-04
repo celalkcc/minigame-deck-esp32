@@ -5,11 +5,11 @@
 
 class Controller {
     private:
-        int value;
-        int mappedValue;
-        int pin;
+        int value;                      // input value from hardware
+        int mappedValue;                // mapped value for the input abstraction layer to read
+        int pin;                        // hardware pin
     public:
-        Controller(int pinNumber);
+        Controller(int pinNumber);      
         int getValue();
 
 }; 

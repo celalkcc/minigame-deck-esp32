@@ -7,11 +7,13 @@
 // hardware abstraction layer
 // the struct InputState is passed to the game
 struct InputState {
+    // tactical stick:
     bool left;
     bool right;
     bool up;
     bool down;
     bool middle;
+    // regular pushbuttons
     bool leftActionButton;
     bool rightActionButton;
 

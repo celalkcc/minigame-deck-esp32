@@ -11,10 +11,10 @@ class Audio{
         unsigned volume;
         int buzzerTimer;
     public:
-        Audio(GameOutput& output);
-        void playTone(int freq, int duration);
-        void colision();
-        void someoneJustScored();
+        Audio(GameOutput& output);              // reads the game state from output abstraction layer
+        void playTone(int freq, int duration);  // used by other funcitons to play melodys
+        void colision();                        // small blip
+        void someoneJustScored();                  // plays a downgoing melody because someone lost a point
 
 };
 

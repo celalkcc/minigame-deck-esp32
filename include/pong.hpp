@@ -18,7 +18,7 @@
 class Pong {
     private:
 
-        GameOutput& output;
+        GameOutput& output;         // output for communication to hardware
         int scoreLeft;
         int scoreRight;
 
@@ -44,9 +44,9 @@ class Pong {
     public:
         Pong(GameOutput& state);
         void begin();
-        void update(const InputState& input);
-        void drawScreen(myDisplay& screen);
-        void checkScore();
+        void update(const InputState& input);       // calculating new coordinates for entities
+        void drawScreen(myDisplay& screen);         // drawing the entities
+        void checkScore();                          
         int getScoreLeft() const;
         int getScoreRight() const;
         void throwIn();
