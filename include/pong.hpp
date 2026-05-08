@@ -12,6 +12,7 @@
 #include "input.hpp"
 #include "audio.hpp"
 #include "output.hpp"
+#include "led.hpp"
 
 // a class managing pong game with a state machine
 
@@ -19,6 +20,7 @@ class Pong {
     private:
 
         GameOutput& output;         // output for communication to hardware
+        LedStrip& myLEDs;
         int scoreLeft;
         int scoreRight;
 
@@ -42,7 +44,7 @@ class Pong {
         pongStates currentState;
 
     public:
-        Pong(GameOutput& state);
+        Pong(GameOutput& state, LedStrip& myLEDs);
         void begin();
         void update(const InputState& input);       // calculating new coordinates for entities
         void drawScreen(myDisplay& screen);         // drawing the entities

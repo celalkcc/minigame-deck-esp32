@@ -18,9 +18,9 @@
 myDisplay oledScreen;
 Input input;
 GameOutput gameOutput;
-Pong game(gameOutput);
-LedStrip WS28;
+LedStrip myLEDs;
 Audio mySound(gameOutput);
+Pong game(gameOutput, myLEDs);
 
 HardwareSerial dfSerial(1);
 DFRobotDFPlayerMini myDFPlayer;
@@ -38,23 +38,25 @@ DeviceState currentState = START_MENU;
 void setup() {
     // Initializing Hardware
     Serial.begin(115200);
-    dfSerial.begin(9600, SERIAL_8N1, DFPLAYER_RX, DFPLAYER_TX);
-    
     oledScreen.begin();
+    delay(500);
     oledScreen.clear();
+
+    myLEDs.greetingBlink();
+    dfSerial.begin(9600, SERIAL_8N1, DFPLAYER_RX, DFPLAYER_TX);
     
     //delay(1000);
     if (!myDFPlayer.begin(dfSerial)) {
         Serial.println("DFPlayer error");
         while(true);
     }
-    myDFPlayer.volume(20);
+    myDFPlayer.volume(10);
 
 
     // Bootscreen
     oledScreen.drawBitmap();
     oledScreen.update();
-    //myDFPlayer.play(1);
+    //myDFPlayer.play(2);
     delay(2000);
 
     pinMode(LEFT, INPUT_PULLUP);
@@ -64,6 +66,7 @@ void setup() {
     pinMode(DOWN, INPUT_PULLUP);
     pinMode(LEFT_PLAYER_BUTTON, INPUT_PULLUP);
     pinMode(RIGHT_PLAYER_BUTTON, INPUT_PULLUP);
+
 }
 
 void loop() {

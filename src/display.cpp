@@ -21,6 +21,7 @@ void myDisplay::begin() {
         Serial.println("SSD1306 allocation failed");
         while(true); 
     oled.begin();
+    oled.clearDisplay();
     }
 }
 

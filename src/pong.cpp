@@ -8,11 +8,13 @@
 #include "display.hpp"
 #include "input.hpp"
 #include "audio.hpp"
+#include "led.hpp"
 
 
-Pong::Pong(GameOutput& output)
+Pong::Pong(GameOutput& output, LedStrip& myLEDs)
     : 
     output(output),
+    myLEDs(myLEDs),
     scoreLeft(0),
     scoreRight(0),
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
@@ -26,8 +28,9 @@ Pong::Pong(GameOutput& output)
 
 void Pong::update(const InputState& input) {
     
-    scoreLeft = output.scoreLeft;
-    scoreRight = output.scoreRight;
+    output.scoreLeft = leftPlayer.getScore();
+    output.scoreRight = rightPlayer.getScore();
+    myLEDs.showScore(output.scoreLeft, output.scoreRight);
 
     switch (currentState) {
         case MENU:

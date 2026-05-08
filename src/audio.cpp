@@ -25,14 +25,6 @@ void Audio::colision() {
 
 void Audio::someoneJustScored() {
     if (output.ballOutsidePlayingField) {
-        /*playTone(392, 180);  // G4
-        playTone(370, 180);  // F#4
-        playTone(330, 220);  // E4
-        playTone(262, 400);  // C4
-
-        ledcWriteTone(BUZZER_LEDC_CHANNEL, 0); // stop
-        output.ballOutsidePlayingField = 0;
-        */
         playTone(880, 80);   // A5
         playTone(660, 100);  // E5
 
