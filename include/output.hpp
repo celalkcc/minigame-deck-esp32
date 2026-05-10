@@ -10,6 +10,7 @@ struct GameOutput {
     bool ballOutsidePlayingField;       // someone scored
     unsigned scoreLeft;                 // for neopixel
     unsigned scoreRight;                // also for neopixel
+    bool actionButton;
 };
 
 

@@ -4,10 +4,13 @@
 #include <Arduino.h>
 #include "conf.hpp"
 #include "output.hpp"
+#include "DFRobotDFPlayerMini.h"
 
 class Audio{
     private:
         GameOutput& output;
+        HardwareSerial dfSerial;
+        DFRobotDFPlayerMini myDFPlayer;
         unsigned volume;
         int buzzerTimer;
     public:
@@ -15,7 +18,7 @@ class Audio{
         void playTone(int freq, int duration);  // used by other funcitons to play melodys
         void colision();                        // small blip
         void someoneJustScored();                  // plays a downgoing melody because someone lost a point
-
+        void actionButton();
 };
 
 

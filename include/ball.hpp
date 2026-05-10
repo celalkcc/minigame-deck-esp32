@@ -32,6 +32,8 @@ public:
     // checks if the ball left the playing field (someone scored)
     bool checkScoreLeft();
     bool checkScoreRight();
+
+    void flipDirection();
 };
 
 #endif

@@ -76,4 +76,8 @@ bool Ball::checkScoreRight() {
     return rightPlayerScored;
 }
 
+void Ball::flipDirection(){
+    veloX = - veloX;
+}
+
 

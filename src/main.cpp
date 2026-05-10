@@ -22,8 +22,7 @@ LedStrip myLEDs;
 Audio mySound(gameOutput);
 Pong game(gameOutput, myLEDs);
 
-HardwareSerial dfSerial(1);
-DFRobotDFPlayerMini myDFPlayer;
+
 
 // Global State Machine
 enum DeviceState{
@@ -43,14 +42,9 @@ void setup() {
     oledScreen.clear();
 
     myLEDs.greetingBlink();
-    dfSerial.begin(9600, SERIAL_8N1, DFPLAYER_RX, DFPLAYER_TX);
     
-    //delay(1000);
-    if (!myDFPlayer.begin(dfSerial)) {
-        Serial.println("DFPlayer error");
-        while(true);
-    }
-    myDFPlayer.volume(10);
+    
+    
 
 
     // Bootscreen
@@ -70,20 +64,7 @@ void setup() {
 }
 
 void loop() {
-    InputState gameInput = input.read();
-
-    if(gameInput.right) {
-        myDFPlayer.next();
-    }
-
-    if(gameInput.down) {
-        myDFPlayer.volumeDown();
-    }
-
-    if(gameInput.up) {
-        myDFPlayer.volumeUp();
-    }
-    
+    InputState gameInput = input.read(); 
 
     switch (currentState) {
         case START_MENU:
@@ -100,6 +81,7 @@ void loop() {
             game.drawScreen(oledScreen);
             mySound.colision();
             mySound.someoneJustScored();
+            mySound.actionButton();
             break;
     }
     

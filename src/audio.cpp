@@ -1,11 +1,25 @@
 #include "audio.hpp"
 #include "conf.hpp"
+#include "DFRobotDFPlayerMini.h"
+
+
 Audio::Audio(GameOutput& output) 
-:   output(output)
+:   output(output),
+    dfSerial(1),
+    myDFPlayer(),
+    volume(dfPlayerStartVolume)
 {
     ledcSetup(BUZZER_LEDC_CHANNEL, 2000, 8);
     ledcAttachPin(PASSIVE_BUZZER, BUZZER_LEDC_CHANNEL);
-    volume = dfPlayerStartVolume;
+    dfSerial.begin(9600, SERIAL_8N1, DFPLAYER_RX, DFPLAYER_TX);
+    delay(1000);
+    if (!myDFPlayer.begin(dfSerial)) {
+        Serial.println("DFPlayer error");
+        while(true);
+    }
+    myDFPlayer.volume(2);
+    myDFPlayer.playFolder(1,1);
+
 }
 
 void Audio::playTone(int freq, int duration) {
@@ -33,5 +47,16 @@ void Audio::someoneJustScored() {
         output.ballOutsidePlayingField = 0;
     }
 }
+
+void Audio::actionButton(){
+    if(output.actionButton){
+        myDFPlayer.volume(15);
+        myDFPlayer.advertise(1);
+        output.actionButton = 0;
+        Serial.println("Playing advert");
+    }
+}
+
+
 
 
