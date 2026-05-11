@@ -12,7 +12,9 @@ constexpr int UPPER_BORDER = 0;
 constexpr int LOWER_BORDER =SCREEN_HEIGHT -1;
 
 // Paddle settings
-constexpr int PADDLE_SIZE= 12;
+#pragma once   
+extern int PADDLE_SIZE;
+
 constexpr int WALL_DISTANCE = 10;
 
 // peripherals and their pins
@@ -30,7 +32,7 @@ constexpr int BUZZER_LEDC_CHANNEL = 0;
 
 constexpr int DFPLAYER_RX = 17;
 constexpr int DFPLAYER_TX = 18;
-constexpr int dfPlayerStartVolume = 20;
+constexpr int dfPlayerStartVolume = 2;
 
 constexpr int LED_PIN = 14;
 constexpr int NUMBER_OF_LEDS = 8;
@@ -40,7 +42,7 @@ constexpr int NUMBER_OF_LEDS = 8;
 
 
 constexpr int RIGHT_PLAYER_BUTTON = 1;
-constexpr int LEFT_PLAYER_BUTTON = 7;
+constexpr int LEFT_PLAYER_BUTTON = 40;
 
 // this determines the debouncing time (see button.cpp)
 constexpr int BUTTON_DEBOUNCE_TIME = 500;

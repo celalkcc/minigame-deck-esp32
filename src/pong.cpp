@@ -10,6 +10,7 @@
 #include "audio.hpp"
 #include "led.hpp"
 
+int PADDLE_SIZE=1;
 
 Pong::Pong(GameOutput& output, LedStrip& myLEDs)
     : 
@@ -20,7 +21,7 @@ Pong::Pong(GameOutput& output, LedStrip& myLEDs)
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
     mainBall(output),
-    currentState(THROW_IN),
+    currentState(MENU),
     leftPlayer(),
     rightPlayer()
 {}
@@ -31,15 +32,19 @@ void Pong::update(const InputState& input) {
     output.scoreRight = rightPlayer.getScore();
     myLEDs.showScore(output.scoreLeft, output.scoreRight);
 
+
     switch (currentState) {
         case MENU:
+            leftPaddle.update(UPPER_BORDER);
+            rightPaddle.update(UPPER_BORDER);
+            PADDLE_SIZE = (input.leftController);
             if(input.middle) {
-                currentState = IN_GAME;
+                currentState = THROW_IN;
             }
         break;
 
         case IN_GAME:
-            output.actionButton = (input.rightActionButton || input.rightActionButton);
+            output.actionButton = (input.rightActionButton || input.leftActionButton);
             leftPaddle.update(input.leftController);
             rightPaddle.update(input.rightController);
             mainBall.update(1, 1);
@@ -55,7 +60,7 @@ void Pong::update(const InputState& input) {
             if (input.middle) {
                 currentState = PAUSE;
             }
-            if (input.rightActionButton){
+            if (input.rightActionButton || input.leftActionButton){
                 mainBall.flipDirection();
             }
             

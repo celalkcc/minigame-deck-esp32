@@ -6,12 +6,12 @@ Paddle::Paddle(int startX, int controllerY, int paddleSize){
     wallDistance = startX;
     size = paddleSize;
     upperY = controllerY;
-    lowerY = upperY + size;
+    lowerY = upperY + PADDLE_SIZE;
 }
 
 void Paddle::update(int controllerY){     
     upperY = controllerY;
-    lowerY = upperY + size;
+    lowerY = upperY + PADDLE_SIZE;
 }
 
 int Paddle::getX() const {
@@ -23,4 +23,9 @@ int Paddle::getUpperY() const{
 
 int Paddle::getLowerY() const {
     return lowerY;
+}
+
+
+int Paddle::getPaddleSize() {
+    return size;
 }

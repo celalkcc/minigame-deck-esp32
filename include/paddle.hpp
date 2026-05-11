@@ -19,6 +19,7 @@ public:
     int getX() const;                   // getter for border check (see ball.cpp)
     int getUpperY() const;              // getter for border check
     int getLowerY() const;              // getter for border check
+    int getPaddleSize();
 };
 
 #endif

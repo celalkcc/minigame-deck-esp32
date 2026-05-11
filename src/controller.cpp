@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "controller.hpp"
 #include "conf.hpp"
+#include "paddle.hpp"
+
 
 Controller::Controller(int pinNumber){
     pin = pinNumber;
