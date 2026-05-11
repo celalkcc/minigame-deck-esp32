@@ -15,6 +15,7 @@ class Audio{
         DFRobotDFPlayerMini myDFPlayer;
         unsigned volume;
         int buzzerTimer;
+        unsigned currentSong;
     public:
         Audio(GameOutput& output, InputState& input);              // reads the game state from output abstraction layer
         void playTone(int freq, int duration);  // used by other funcitons to play melodys

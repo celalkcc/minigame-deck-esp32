@@ -39,6 +39,8 @@ void Pong::update(const InputState& input) {
             rightPaddle.update(UPPER_BORDER);
             PADDLE_SIZE = (input.leftController);
             if(input.middle) {
+                leftPaddle.setDefaultSize();
+                rightPaddle.setDefaultSize();
                 currentState = THROW_IN;
             }
         break;
@@ -60,8 +62,13 @@ void Pong::update(const InputState& input) {
             if (input.middle) {
                 currentState = PAUSE;
             }
-            if (input.rightActionButton || input.leftActionButton){
+            if (input.rightActionButton){
                 mainBall.flipDirection();
+                leftPaddle.halfSize();
+            }
+            if (input.leftActionButton) {
+                mainBall.flipDirection();
+                rightPaddle.halfSize();
             }
             
                 
@@ -71,11 +78,14 @@ void Pong::update(const InputState& input) {
             leftPaddle.update(input.leftController);
             rightPaddle.update(input.rightController);
             if (input.middle){
+                leftPaddle.setDefaultSize();
+                rightPaddle.setDefaultSize();
                 currentState = IN_GAME;
            } 
         break;
 
         case THROW_IN:
+
             if (leftPlayer.getScore() > 4){
                 leftPlayer.resetScore();
                 rightPlayer.resetScore();
@@ -96,6 +106,7 @@ void Pong::update(const InputState& input) {
         break;
 
         case LEFT_WINS:
+            
             // Insert Bitmap image for left player wins
             currentState = MENU;
         break;

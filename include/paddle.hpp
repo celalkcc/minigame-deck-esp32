@@ -9,6 +9,7 @@ private:
     // coordinates and size
     int wallDistance;
     int size;
+    int defaultSize;
     int upperY;
     int lowerY;
 
@@ -20,6 +21,9 @@ public:
     int getUpperY() const;              // getter for border check
     int getLowerY() const;              // getter for border check
     int getPaddleSize();
+    void halfSize();
+    void resetSize();
+    void setDefaultSize();
 };
 
 #endif

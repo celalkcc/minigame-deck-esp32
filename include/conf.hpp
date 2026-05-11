@@ -33,8 +33,10 @@ constexpr int BUZZER_LEDC_CHANNEL = 0;
 constexpr int DFPLAYER_RX = 17;
 constexpr int DFPLAYER_TX = 18;
 constexpr int dfPlayerStartVolume = 2;
+constexpr int SONG_COUNT = 4;
+
 constexpr int VOICE_OVERRANGE_START = 2;
-constexpr int VOICE_OVER_RANGE_END = 19;
+constexpr int VOICE_OVER_RANGE_END = 20;
 
 
 constexpr int LED_PIN = 14;

@@ -1,1 +1,3 @@
 make a win screen for each player
+use dfplayer readFileCounts() and readFileCountsInFolder()
+to set file ranges in settings

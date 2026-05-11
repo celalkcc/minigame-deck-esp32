@@ -20,7 +20,8 @@ Audio::Audio(GameOutput& output, InputState& input)
         while(true);
     }
     myDFPlayer.volume(15);
-    myDFPlayer.playFolder(1,1);
+    myDFPlayer.loopFolder(1);
+    currentSong = 2;
 
 }
 
@@ -72,6 +73,9 @@ void Audio::musicControl() {
         myDFPlayer.next();
     }
 }
+
+
+
 
 
 
