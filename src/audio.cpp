@@ -1,10 +1,12 @@
 #include "audio.hpp"
 #include "conf.hpp"
 #include "DFRobotDFPlayerMini.h"
+#include "input.hpp"
 
 
-Audio::Audio(GameOutput& output) 
+Audio::Audio(GameOutput& output, InputState& input) 
 :   output(output),
+    input(input),
     dfSerial(1),
     myDFPlayer(),
     volume(dfPlayerStartVolume)
@@ -17,7 +19,7 @@ Audio::Audio(GameOutput& output)
         Serial.println("DFPlayer error");
         while(true);
     }
-    myDFPlayer.volume(2);
+    myDFPlayer.volume(15);
     myDFPlayer.playFolder(1,1);
 
 }
@@ -39,6 +41,7 @@ void Audio::colision() {
 
 void Audio::someoneJustScored() {
     if (output.ballOutsidePlayingField) {
+        myDFPlayer.advertise(random(2, 19));
         playTone(880, 80);   // A5
         playTone(660, 100);  // E5
 
@@ -50,10 +53,24 @@ void Audio::someoneJustScored() {
 
 void Audio::actionButton(){
     if(output.actionButton){
-        myDFPlayer.volume(15);
         myDFPlayer.advertise(1);
         output.actionButton = 0;
         Serial.println("Playing advert");
+    }
+}
+
+void Audio::musicControl() {
+    if(input.up) {
+        myDFPlayer.volumeUp();
+    }
+    if(input.down) {
+        myDFPlayer.volumeDown();
+    }
+    if(input.left) {
+        myDFPlayer.previous();
+    }
+    if(input.right) {
+        myDFPlayer.next();
     }
 }
 

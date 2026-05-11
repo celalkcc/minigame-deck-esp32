@@ -64,5 +64,17 @@ void myDisplay::drawCenterLine() {
 }
 
 void myDisplay::drawBitmap() {
-    oled.drawBitmap(0,0, midori_san, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
+    oled.drawBitmap(0,0, Midori_LeftDinosaur, SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
+}
+
+void myDisplay::midoriTalkingLeft() {
+        int talkingTimer = millis();
+        bool imageSwitcher = 0;
+
+        if ((millis() - talkingTimer) > midoriTalkingInterval){
+            imageSwitcher = !imageSwitcher;
+        }
+        oled.clearDisplay();
+        oled.drawBitmap(0,0, Midori_LeftallArray[imageSwitcher], SCREEN_WIDTH, SCREEN_HEIGHT, WHITE);
+        oled.display();
 }

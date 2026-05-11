@@ -45,5 +45,7 @@ constexpr int LEFT_PLAYER_BUTTON = 7;
 // this determines the debouncing time (see button.cpp)
 constexpr int BUTTON_DEBOUNCE_TIME = 500;
 
+constexpr int midoriTalkingInterval = 100;
+
 #endif
 

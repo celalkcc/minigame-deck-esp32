@@ -14,6 +14,8 @@ class myDisplay {
         void update();                                  // displays the changes
         void drawCenterLine();                          // marks the middle of playing field
         void drawBitmap();                              // drawing images
+        void midoriTalkingLeft();
+        void midoriTalkingRight();
 };
 
 #endif

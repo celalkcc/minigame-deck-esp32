@@ -27,7 +27,6 @@ Pong::Pong(GameOutput& output, LedStrip& myLEDs)
 
 
 void Pong::update(const InputState& input) {
-    output.actionButton = (input.rightActionButton || input.rightActionButton);
     output.scoreLeft = leftPlayer.getScore();
     output.scoreRight = rightPlayer.getScore();
     myLEDs.showScore(output.scoreLeft, output.scoreRight);
@@ -40,6 +39,7 @@ void Pong::update(const InputState& input) {
         break;
 
         case IN_GAME:
+            output.actionButton = (input.rightActionButton || input.rightActionButton);
             leftPaddle.update(input.leftController);
             rightPaddle.update(input.rightController);
             mainBall.update(1, 1);

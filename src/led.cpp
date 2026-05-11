@@ -25,11 +25,11 @@ void LedStrip::showScore(int leftScore, int rightScore) {
     FastLED.setBrightness(15);
     fill_solid(leds, NUMBER_OF_LEDS, CRGB::Black);
     for (int i = 0; i < leftScore; i++){
-        leds[i] = CRGB::Red;
+        leds[i] = CRGB::Green;
     }
 
     for (int i = 0; i < rightScore; i++) {
-        leds[NUMBER_OF_LEDS -1 -i] = CRGB::Blue; 
+        leds[NUMBER_OF_LEDS -1 -i] = CRGB::Yellow1; 
     }
     
     FastLED.show();

@@ -17,9 +17,10 @@
 
 myDisplay oledScreen;
 Input input;
+InputState gameInput;
 GameOutput gameOutput;
 LedStrip myLEDs;
-Audio mySound(gameOutput);
+Audio mySound(gameOutput, gameInput);
 Pong game(gameOutput, myLEDs);
 
 
@@ -48,7 +49,7 @@ void setup() {
 
 
     // Bootscreen
-    oledScreen.drawBitmap();
+    oledScreen.midoriTalkingLeft();
     oledScreen.update();
     //myDFPlayer.play(2);
     delay(2000);
@@ -64,7 +65,9 @@ void setup() {
 }
 
 void loop() {
-    InputState gameInput = input.read(); 
+    gameInput = input.read();
+    mySound.musicControl();
+    
 
     switch (currentState) {
         case START_MENU:
