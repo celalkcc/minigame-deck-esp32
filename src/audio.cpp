@@ -41,7 +41,7 @@ void Audio::colision() {
 
 void Audio::someoneJustScored() {
     if (output.ballOutsidePlayingField) {
-        myDFPlayer.advertise(random(2, 19));
+        myDFPlayer.advertise(random(VOICE_OVERRANGE_START, VOICE_OVER_RANGE_END));
         playTone(880, 80);   // A5
         playTone(660, 100);  // E5
 
@@ -55,7 +55,6 @@ void Audio::actionButton(){
     if(output.actionButton){
         myDFPlayer.advertise(1);
         output.actionButton = 0;
-        Serial.println("Playing advert");
     }
 }
 
